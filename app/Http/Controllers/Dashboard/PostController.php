@@ -48,7 +48,7 @@ class PostController extends Controller
       
         Post::create($request->validated());
 
-        return to_route('post.index');
+        return to_route('post.index')->with('status', 'Post creado');
 
         // Post::create(
         //     [
@@ -96,12 +96,12 @@ class PostController extends Controller
         
         // image
         $post->update($data);
-        return to_route('post.index');
+        return to_route('post.index')->with('status', 'Post actualizado');
     }
 
     public function destroy(Post $post)
     {
         $post->delete();
-        return to_route('post.index');
+        return to_route('post.index')->with('status', 'Post borrado');
     }
 }
